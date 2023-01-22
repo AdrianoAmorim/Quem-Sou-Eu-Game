@@ -1,4 +1,5 @@
 const img = document.querySelector("#boxImg img");
+const btnStart = document.querySelector("#boxButtonStart button");
 
 var imagensSorteio = [
     {
@@ -20,4 +21,4 @@ console.log(positSorteada)
     img.setAttribute("src",`${imagensSorteio[positSorteada].url}`);
 }
 
-sortearImg();
+btnStart.addEventListener("click",sortearImg);
