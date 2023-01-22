@@ -7,12 +7,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*BACKGROUND DO GAME*/
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom, #6c12ea 2%,#1547d3 30%,#0678d6 72%,#8585e6 100%);
 }
+/*CLASSES GLOBAIS*/
 .container{
     display: flex;
     flex-direction: column;
@@ -23,6 +25,7 @@ body{
     max-width: 840px;
 
 }
+/*ESTILO DA LOGO DO GAME*/
 #boxLogoGame{
     margin-bottom: 20px;
 }
@@ -36,6 +39,7 @@ body{
     text-shadow: 0 0 15px #1c5c07;
 
 }
+/*ESTILOS DA IMAGEM*/
 #borderImg{
    border-radius: 30px;
     overflow: hidden;
@@ -49,6 +53,7 @@ body{
 #boxImg img{
     width: 100%;
 }
+/*ESTILOS DO NOME DA IMAGEM */
 #boxNomeImg{
     display: flex;
     justify-content: center;
@@ -68,6 +73,7 @@ body{
     color: #0f3801;
     text-transform: uppercase;
 }
+/*ESTILOS DO BOTAO START*/
 #boxButtonStart{
     margin-top: 30px;
 }
@@ -80,4 +86,41 @@ body{
     font-weight: 500px;
     font-family: Patchwork ;
     color: #1547d3;
+}
+
+@media (max-width: 571px){
+    #boxLogoGame h2{
+        font-size: 25px;
+    }
+    #boxImg {
+        max-width: 350px;
+    }
+    #boxNomeImg{
+        max-width: 350px;
+    }
+    #boxNomeImg span{
+        font-size: 22px;
+    }
+    #boxButtonStart button{
+        padding: 8px;
+        font-size: .8rem;
+    }
+}
+@media (max-width: 450px){
+    #boxLogoGame h2{
+        font-size: 19px;
+    }
+    #boxImg {
+        max-width: 290px;
+    }
+    #boxNomeImg{
+        max-width: 290px;
+    }
+    #boxNomeImg span{
+        font-size: 22px;
+    }
+    #boxButtonStart button{
+        padding: 8px;
+        font-size: .8rem;
+    }
 }
