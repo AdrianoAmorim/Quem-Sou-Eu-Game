@@ -2,20 +2,23 @@
     font-family: Patchwork;
     src: url(../fonts/PatchworkColor.ttf);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /*BACKGROUND DO GAME*/
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #6c12ea 2%,#1547d3 30%,#0678d6 72%,#8585e6 100%);
+    background: linear-gradient(to bottom, #6c12ea 2%, #1547d3 30%, #0678d6 72%, #8585e6 100%);
 }
+
 /*CLASSES GLOBAIS*/
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,36 +28,49 @@ body{
     max-width: 840px;
 
 }
+
+.containerResponsivo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
 /*ESTILO DA LOGO DO GAME*/
-#boxLogoGame{
+#boxLogoGame {
     margin-bottom: 20px;
 }
-#boxLogoGame h2{
+
+#boxLogoGame h2 {
     font-family: Patchwork;
     font-size: 32px;
     color: #8af89c;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #0f3801;
-    
+
     text-shadow: 0 0 15px #1c5c07;
 
 }
+
 /*ESTILOS DA IMAGEM*/
-#borderImg{
-   border-radius: 30px;
+#borderImg {
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px 10px #56f82d ;
+    box-shadow: 0px 0px 10px 10px #56f82d;
 }
-#boxImg{
+
+#boxImg {
     width: 100%;
     max-width: 450px;
     z-index: 2;
 }
-#boxImg img{
+
+#boxImg img {
     width: 100%;
 }
+
 /*ESTILOS DO NOME DA IMAGEM */
-#boxNomeImg{
+#boxNomeImg {
     display: flex;
     justify-content: center;
     align-items: end;
@@ -66,61 +82,60 @@ body{
     line-height: 70px;
     z-index: 1;
 }
-#boxNomeImg span{
+
+#boxNomeImg span {
     font-size: 28px;
-    font-family:"Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-weight: 800;
     color: #0f3801;
     text-transform: uppercase;
 }
+
 /*ESTILOS DO BOTAO START*/
-#boxButtonStart{
+#boxButtonStart {
     margin-top: 30px;
 }
-#boxButtonStart button{
-   padding: 15px;
+
+#boxButtonStart button {
+    padding: 15px;
     border-radius: 10px;
     background-color: #fff;
-    border: 2px solid #0f3801 ;
+    border: 2px solid #0f3801;
     font-size: 1rem;
     font-weight: 500px;
-    font-family: Patchwork ;
+    font-family: Patchwork;
     color: #1547d3;
 }
 
-@media (max-width: 571px){
-    #boxLogoGame h2{
-        font-size: 25px;
+@media (max-width:920px) and (max-height:420px) {
+    .containerResponsivo {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
+
+    #boxLogoGame {
+        margin-top: 15px;
+       margin-bottom: 0;
+    }
+
+    #boxButtonStart {
+        margin-top: 0;
+        margin-left: 85px;
+    }
+
     #boxImg {
-        max-width: 350px;
+        max-width: 255px;
     }
-    #boxNomeImg{
-        max-width: 350px;
+
+    #boxNomeImg {
+        max-width: 255px;
     }
-    #boxNomeImg span{
-        font-size: 22px;
-    }
-    #boxButtonStart button{
-        padding: 8px;
-        font-size: .8rem;
-    }
-}
-@media (max-width: 450px){
-    #boxLogoGame h2{
-        font-size: 19px;
-    }
-    #boxImg {
-        max-width: 290px;
-    }
-    #boxNomeImg{
-        max-width: 290px;
-    }
-    #boxNomeImg span{
-        font-size: 22px;
-    }
-    #boxButtonStart button{
-        padding: 8px;
-        font-size: .8rem;
+
+    #boxNomeImg span {
+        font-size: 24px;
     }
 }
