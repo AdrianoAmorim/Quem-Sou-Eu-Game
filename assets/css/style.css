@@ -68,3 +68,16 @@ body{
     color: #0f3801;
     text-transform: uppercase;
 }
+#boxButtonStart{
+    margin-top: 30px;
+}
+#boxButtonStart button{
+   padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 2px solid #0f3801 ;
+    font-size: 1rem;
+    font-weight: 500px;
+    font-family: Patchwork ;
+    color: #1547d3;
+}
