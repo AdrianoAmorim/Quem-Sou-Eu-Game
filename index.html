@@ -10,14 +10,25 @@
 </head>
 
 <body>
+    <div class="boxContInicio hidden">
+        <span>1</span>
+    </div>
+
     <div class="container">
+        
         <div id="boxLogoGame">
             <div>
                 <h2>Quem Sou <span>Eu</span>?</h2>
             </div>
+            <div class="boxOpc">
+                <button>--</button>
+                <button>Voltar</button>
+                <button>Som</button>
+            </div>
         </div>
+
         <div class="containerResponsivo">
-            <div id="borderImg">
+            <div class="hidden" id="borderImg" >
                 <div id="boxImg">
                     <img src="./assets/img/cachorro.jpg" />
                 </div>
@@ -25,18 +36,17 @@
                     <span>Nome do Item</span>
                 </div>
             </div>
+            <div class="boxInterrogacao animacaoInterrogacao ">
+                <span>?</span>
+            </div>
             <div id="boxButtonStart">
                 <button>Iniciar</button>
+                <div class="tempoJogo hidden">
+                    <span>-</span>
+                </div>
             </div>
         </div>
-
     </div>
-
-
-
-
-
-
 
     <script src="./assets/js/script.js"></script>
 </body>
