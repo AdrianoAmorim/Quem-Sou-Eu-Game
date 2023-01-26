@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     max-width: 840px;
@@ -37,6 +37,9 @@ body {
 }
 .hidden{
     display: none !important;
+}
+.bgVerde{
+    background-color: #1c5c07;
 }
 /*ESTILO DA LOGO DO GAME*/
 #boxLogoGame {
@@ -147,13 +150,23 @@ body {
    align-items: center;
    width: 150px;
 }
+
 .boxOpc button{
-    padding: 10px 5px; 
+    padding: 10px;
     color: #fff;
-    background-color: #160b36;
+    background-color: #ffffff;
     margin: 0 5px;
     border: none;
     border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+.boxOpc button:last-child{
+    background-color: #c53636;
+}
+
+.boxOpc button img{
+    width: 100%;
 }
 
 /*ESTILO DOS CONTADORES DO JOGO*/
@@ -194,7 +207,7 @@ body {
     background-color: #296614cc;
     border-radius: 15px;
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
 }
 .boxTelaNovoJogo .containerNovoJogo .boxTextNovoJogo{
     display: flex;
@@ -212,12 +225,14 @@ body {
     font-size: 16px;
     margin: 5px 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    text-align: center;
 }
 .boxTelaNovoJogo .containerNovoJogo .boxAcertouNovoJogo{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 10px;
 }
 .boxTelaNovoJogo .containerNovoJogo .boxAcertouNovoJogo input{
   
@@ -230,12 +245,21 @@ body {
   cursor:pointer;
   border-radius: 10px;
 }
+.boxImgAcertouNovoJogo{
+    max-width: 40px;
+    margin-right: 15px;
+    margin-left: -40px;
+}
+.boxAcertouNovoJogo img{
+    width: 100%;
+}
 
 .boxBtnNovoJogo{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width:100%;
+    margin-top: 25px;
 }
 .boxBtnNovoJogo .btnNovoJogo{
     padding: 5px;
@@ -246,6 +270,11 @@ body {
     font-weight: 500;
     font-family: Patchwork;
     color: #1547d3;
+    transition: background-color .2s ease-in;
+}
+.boxBtnNovoJogo .btnNovoJogo:active,.btnNovoJogo:hover{
+    background-color:#c53636;
+    color: #fff;
 }
 /*ANIMACOES*/
 .animacaoInterrogacao{
@@ -259,6 +288,17 @@ body {
 }
 .animacaoContInicial{
     animation: animacaoContInicial .2s ease-in alternate forwards;
+}
+.animacaoMovMaoAcertou{
+    animation: movMaoAcertou .6s ease-in-out alternate infinite;
+}
+@keyframes movMaoAcertou {
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(-60deg);
+    }
 }
 @keyframes fadeIn {
     from{

@@ -13,8 +13,12 @@ const telaJogarNovamente = document.querySelector(".boxTelaNovoJogo");
 const cbAcertou = document.getElementById("cbAcertou");
 const btnContinuarNj = document.getElementById("btnContinuarNj");
 const btnNovoJogo = document.getElementById("btnNovoJogo");
+const btnSom = document.getElementById("btnSom");
+const btnHome = document.getElementById("btnHome");
 
+//VARIAVEIS GLOBAIS
 var countVitorias = 0;
+var interval ;
 var imagensSorteio = [
     {
         nome: "Cachorro", url: "./assets/img/cachorro.jpg"
@@ -36,44 +40,57 @@ const setAnimaçoes = () => {
 const startGame = () => {
     animacaoContagemInicial();
     startContadorInicial(5, textContInicial);
-
+   
 }
 
 //FUNCAO QUE INICIA O CONTADOR inicial DA RODADA
 const startContadorInicial = (tempo, elemento) => {
     elemento.textContent = tempo;
-    const interval = setInterval(() => {
+
+     interval = setInterval(() => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
+            console.log("dentro do if")
         } else {
             enterGame();
-            clearInterval(interval);
         }
     }, 1000);
 }
 //CONTADOR DA JOGADA
 const startContadorJogada = (tempo, elemento) => {
     elemento.textContent = tempo;
-    const interval = setInterval(() => {
+     interval = setInterval(() => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
         } else {
             animacaoTelaJogarNovamente();
-            clearInterval(interval);
         }
     }, 1000);
 }
+//FUNCAO PARA VOLTAR NO HOME
+const retornarHome = ()=>{
+    clearInterval(interval);
+    quadroImg.classList.add("outLeft");
+    quadroImg.classList.add("hidden");
+    interrogacao.classList.remove("hidden");
+    contador.classList.add("hidden");
+    btnStart.classList.remove("hidden");
+    btnStart.classList.add("fadeIn");
+    
 
+}
 //ENTRA NO JOGO 
 const enterGame = () => {
+    clearInterval(interval);
     setImg(sortearNum(3));
     resetTelaContInicial();
     startContadorJogada(5, textContador);
 }
 //FAZ A ANIMACAO DE TROCA DE TELA PARA A TELA jOGAR nOVAMENTE
 const animacaoTelaJogarNovamente = () => {
+    clearInterval(interval);
     tela.classList.add("hidden");
     telaJogarNovamente.classList.add("fadeIn")
     telaJogarNovamente.classList.remove("hidden");
@@ -119,6 +136,7 @@ const resetTelaContInicial = () => {
 
 //FUNCAO QUE CRIA A ANIMAÇÃO E CHAMADA DA TELA DE CONTAGEM ANTES DO INICIO DO JOGO
 const animacaoContagemInicial = () => {
+    quadroImg.classList.remove("outLeft");
     tela.classList.add("hidden");
     contInicial.classList.remove("hidden");
     textContInicial.classList.add("animacaoContInicial");
@@ -140,6 +158,7 @@ const setImg = (numSorteado) => {
 btnContinuarNj.addEventListener("click", () => continuarJogando());
 btnNovoJogo.addEventListener("click", () => novoJogo());
 btnStart.addEventListener("click", () => startGame());
+btnHome.addEventListener("click",()=> retornarHome());
 
 window.onload = setAnimaçoes();
 

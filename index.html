@@ -15,19 +15,25 @@
         <span>-</span>
     </div>
     <!--TELA PARA CONTINUAR JOGANDO OU RECOMECAR O JOGO-->
-    <div class="boxTelaNovoJogo hidden ">
+    <div class="boxTelaNovoJogo  hidden">
         <div class="containerNovoJogo">
             <div class="boxTextNovoJogo">
-                <span>Voce Ganhou?</span>
+                <span>Voce Acertou?</span>
                 <span id="subTextNovoJog">
-                    (Se acertou quem é, marque Abaixo)
+                    Adivinhou Quem Sou EU ? 
+                    <br/>Marque Abaixo
                 </span>
             </div>
             <div class="boxAcertouNovoJogo">
-                <input type="checkbox" value="1" id="cbAcertou"/>
+                <div class="boxImgAcertouNovoJogo animacaoMovMaoAcertou">
+                    <img src="/assets/img/iconMao.png" alt="iconMao" />
+                </div>
+                <input type="checkbox" value="1" id="cbAcertou" />
             </div>
             <div class="boxBtnNovoJogo">
-                <button class="btnNovoJogo" id="btnContinuarNj">Continuar</button>
+                <button class="btnNovoJogo" id="btnContinuarNj">
+                   Continuar
+                </button>
                 <button class="btnNovoJogo" id="btnNovoJogo">Novo Jogo</button>
             </div>
         </div>
@@ -36,20 +42,24 @@
         <!--AREA ONDE FICA A LOGO E AS OPCOES E CAMPO DE VITORIAS-->
         <div id="boxLogoGame">
             <div class="boxVitorias">
-                <img src="assets/img/iconVitoria.png" alt="Icon-Vitoria"/>
+                <img src="assets/img/iconVitoria.png" alt="Icon-Vitoria" />
                 <span>0</span>
             </div>
             <div>
                 <h2>Quem Sou <span>Eu</span>?</h2>
             </div>
             <div class="boxOpc">
-                <button>Reset</button>
-                <button>Som</button>
+                <button id="btnHome">
+                    <img src="./assets/img/home.png" alt="iconSom"/>
+                </button>
+                <button id="btnSom">
+                    <img src="./assets/img/iconSom.png" alt="iconSom"/>
+                </button>
             </div>
         </div>
         <!--AREA ONDE CONTEM O QUADRO DE IMAGENS E O BOTAO INICIAR GAME-->
         <div class="containerResponsivo">
-            <div class="hidden" id="borderImg" >
+            <div class="hidden" id="borderImg">
                 <div id="boxImg">
                     <img src="./assets/img/cachorro.jpg" />
                 </div>
