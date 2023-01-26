@@ -41,7 +41,7 @@ body {
 /*ESTILO DA LOGO DO GAME*/
 #boxLogoGame {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
@@ -118,14 +118,30 @@ body {
     font-family: Patchwork;
     color: #1547d3;
 }
-/*ESTILO DO CONTADOR DA JOGADA*/
-.tempoJogo span{
-    font-size: 100px;
-    color: #fff;
-    font-weight: bold;
-    -webkit-text-stroke: 1px #0f3801;
+/*ESTILO DA AREA de VITORIAS*/
+.boxVitorias{
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    top: 10px;
+    left:10px;
+    width: 40px;
 }
+.boxVitorias img{
+    width: 100%;
+}
+.boxVitorias span{
+    font-size: 16px;
+    font-family: Patchwork ;
+    color:#fff;
+    -webkit-text-stroke: 2px #0f3801;
+}
+/*ESTILO DA CAIXA DE BOTOES DE OPCOES DO JOGO*/
 .boxOpc{
+    position: absolute;
+    right: 10px;
+    top: 10px;
    display: flex;
    justify-content: end;
    align-items: center;
@@ -138,6 +154,14 @@ body {
     margin: 0 5px;
     border: none;
     border-radius: 20px;
+}
+
+/*ESTILO DOS CONTADORES DO JOGO*/
+.tempoJogo span{
+    font-size: 100px;
+    color: #fff;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #0f3801;
 }
 .boxContInicio{
     display: flex;
