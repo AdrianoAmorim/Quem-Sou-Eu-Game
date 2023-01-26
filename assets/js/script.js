@@ -8,6 +8,7 @@ const tela = document.querySelector(".container");
 const interrogacao = document.querySelector(".boxInterrogacao");
 const contInicial = document.querySelector(".boxContInicio");
 const textContInicial = document.querySelector(".boxContInicio span");
+const telaJogarNovamente = document.querySelector(".boxTelaNovoJogo");
 
 var imagensSorteio = [
     {
@@ -25,45 +26,52 @@ const setAnimaçoes = () => {
     tela.classList.add("fadeIn");
 }
 //FUNCAO PARA INICIAR O JOGO
-const startGame = (numSorteado) => {
+const startGame = () => {
     animacaoContagemInicial();
     startContadorInicial(5, textContInicial);
 
 }
 
 //FUNCAO QUE INICIA O CONTADOR inicial DA RODADA
-const startContadorInicial = (num, elemento) => {
-    elemento.textContent = num;
+const startContadorInicial = (tempo, elemento) => {
+    elemento.textContent = tempo;
     const interval = setInterval(() => {
-        --num
-        if (num > 0) {
-            elemento.textContent = num ;
+        --tempo
+        if (tempo > 0) {
+            elemento.textContent = tempo;
         } else {
-           enterGame();
+            enterGame();
             clearInterval(interval);
         }
     }, 1000);
 }
-const startContadorJogada = (num, elemento) => {
-    elemento.textContent = num;
+const startContadorJogada = (tempo, elemento) => {
+    elemento.textContent = tempo;
     const interval = setInterval(() => {
-        --num
-        if (num > 0) {
-            elemento.textContent = num ;
+        --tempo
+        if (tempo > 0) {
+            elemento.textContent = tempo;
         } else {
-
+            jogarNovamente();
             clearInterval(interval);
         }
     }, 1000);
 }
 
-
-const enterGame = () =>{
+//ENTRA NO JOGO (aqui eu passo o tamanho do array q tem as imagens p sorteio)
+const enterGame = () => {
     setImg(sortearNum(3));
     resetTelaContInicial();
-    startContadorJogada(5,textContador);
+    startContadorJogada(5, textContador);
 }
-
+//FUNCAO PARA PERGUNTA O JOGADOR SE QUER CONTINUAR JOGANDO OU REINICIAR A PARTIDA
+const jogarNovamente = () => {
+    animacaoTelaJogarNovamente();
+}
+const animacaoTelaJogarNovamente = () => {
+    tela.classList.add("hidden");
+    telaJogarNovamente.classList.remove("hidden");
+}
 //FUNCAO PARA RETORNA A TELA PRINCIPAL DO JOGO
 const resetTelaContInicial = () => {
     contInicial.classList.add("hidden");
@@ -78,7 +86,7 @@ const resetTelaContInicial = () => {
 const animacaoContagemInicial = () => {
     tela.classList.add("hidden");
     contInicial.classList.remove("hidden");
-    textContInicial.classList.add("animacaoContInicial"); 
+    textContInicial.classList.add("animacaoContInicial");
 }
 
 //FUNCAO PARA SORTEAR UM NUMERO QUE SERA USADO PARA PEGAR A POSICAO NO ARRAY DE IMAGENS
@@ -95,7 +103,7 @@ const setImg = (numSorteado) => {
 
 
 
-btnStart.addEventListener("click", () => startGame(sortearNum(3)));
+btnStart.addEventListener("click", () => startGame());
 
 window.onload = setAnimaçoes();
 

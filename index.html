@@ -10,12 +10,30 @@
 </head>
 
 <body>
+    <!--TELA DE CONTAGEM INICIAL ANTES DE ENTRAR NA JOGADA-->
     <div class="boxContInicio hidden">
         <span>-</span>
     </div>
-
+    <!--TELA PARA CONTINUAR JOGANDO OU RECOMECAR O JOGO-->
+    <div class="boxTelaNovoJogo hidden">
+        <div class="containerNovoJogo">
+            <div class="boxTextNovoJogo">
+                <span>Voce Ganhou?</span>
+                <span id="subTextNovoJog">
+                    (Se acertou quem é, marque Abaixo)
+                </span>
+            </div>
+            <div class="boxAcertouNovoJogo">
+                <input type="checkbox" value="1"/>
+            </div>
+            <div class="boxBtnNovoJogo">
+                <button class="btnNovoJogo">Continuar</button>
+                <button class="btnNovoJogo">Novo Jogo</button>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        
+        <!--AREA ONDE FICA A LOGO E AS OPCOES E CAMPO DE VITORIAS-->
         <div id="boxLogoGame">
             <div class="boxVitorias">
                 <img src="assets/img/iconVitoria.png" alt="Icon-Vitoria"/>
@@ -29,7 +47,7 @@
                 <button>Som</button>
             </div>
         </div>
-
+        <!--AREA ONDE CONTEM O QUADRO DE IMAGENS E O BOTAO INICIAR GAME-->
         <div class="containerResponsivo">
             <div class="hidden" id="borderImg" >
                 <div id="boxImg">
@@ -39,9 +57,11 @@
                     <span>Nome do Item</span>
                 </div>
             </div>
+
             <div class="boxInterrogacao animacaoInterrogacao ">
                 <span>?</span>
             </div>
+            <!--AREA COM O BOTAO INICIAR JOGO-->
             <div id="boxButtonStart">
                 <button>Iniciar</button>
                 <div class="tempoJogo hidden">
