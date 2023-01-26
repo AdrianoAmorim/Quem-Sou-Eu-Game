@@ -27,47 +27,60 @@ const setAnimaçoes = () => {
 //FUNCAO PARA INICIAR O JOGO
 const startGame = (numSorteado) => {
     animacaoContagemInicial();
-    setImg(numSorteado);
-    animacaoStartJogo();
-    startContador(10,textContador);
+    startContadorInicial(5, textContInicial);
+
 }
 
-
-//FUNCAO QUE INICIA O CONTADOR DA RODADA
-const startContador = (num,elemento) => {
-    elemento.textContent= num;
+//FUNCAO QUE INICIA O CONTADOR inicial DA RODADA
+const startContadorInicial = (num, elemento) => {
+    elemento.textContent = num;
     const interval = setInterval(() => {
-        if(num >= 0) {
-            elemento.textContent = num--
-        }else{
+        --num
+        if (num > 0) {
+            elemento.textContent = num ;
+        } else {
+           enterGame();
             clearInterval(interval);
         }
     }, 1000);
-    
+}
+const startContadorJogada = (num, elemento) => {
+    elemento.textContent = num;
+    const interval = setInterval(() => {
+        --num
+        if (num > 0) {
+            elemento.textContent = num ;
+        } else {
+
+            clearInterval(interval);
+        }
+    }, 1000);
+}
+
+
+const enterGame = () =>{
+    setImg(sortearNum(3));
+    resetTelaContInicial();
+    startContadorJogada(5,textContador);
+}
+
+//FUNCAO PARA RETORNA A TELA PRINCIPAL DO JOGO
+const resetTelaContInicial = () => {
+    contInicial.classList.add("hidden");
+    tela.classList.remove("hidden");
+    interrogacao.classList.add("hidden");
+    quadroImg.classList.remove("hidden");
+    contador.classList.remove("hidden");
+    btnStart.classList.add("hidden");
 }
 
 //FUNCAO QUE CRIA A ANIMAÇÃO E CHAMADA DA TELA DE CONTAGEM ANTES DO INICIO DO JOGO
-const animacaoContagemInicial = ()=>{
+const animacaoContagemInicial = () => {
     tela.classList.add("hidden");
     contInicial.classList.remove("hidden");
-    textContInicial.classList.add("animacaoContInicial");
-    console.log(startContador(5,textContInicial));
-
+    textContInicial.classList.add("animacaoContInicial"); 
 }
-//FUNCAO QUE CRIA A ANIMACAO DE TROCA DOS ELEMENTOS DO GAME E INICIA O CONTADOR
-const animacaoStartJogo = () => {
-    interrogacao.classList.replace("animacaoInterrogacao", "outLeft");
-    setTimeout(() => {
-        interrogacao.classList.add("hidden");
-        interrogacao.classList.remove("outLeft");
-        quadroImg.classList.remove("hidden");
-        quadroImg.classList.add("fadeIn");
-        btnStart.classList.add("hidden");
-        contador.classList.remove("hidden")
-    }, 300);
 
-
-}
 //FUNCAO PARA SORTEAR UM NUMERO QUE SERA USADO PARA PEGAR A POSICAO NO ARRAY DE IMAGENS
 const sortearNum = numMaxImg => parseInt(Math.random() * numMaxImg)
 
@@ -77,6 +90,10 @@ const setImg = (numSorteado) => {
     img.setAttribute("src", `${imagensSorteio[numSorteado].url}`);
     textImg.textContent = imagensSorteio[numSorteado].nome;
 };
+
+
+
+
 
 btnStart.addEventListener("click", () => startGame(sortearNum(3)));
 
