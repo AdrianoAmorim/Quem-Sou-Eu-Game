@@ -16,7 +16,9 @@ body {
     align-items: center;
     background: linear-gradient(to bottom, #6c12ea 2%, #1547d3 30%, #0678d6 72%, #8585e6 100%);
 }
-
+button{
+    cursor: pointer;
+}
 /*CLASSES GLOBAIS*/
 .container {
     display: flex;
@@ -39,7 +41,7 @@ body {
     display: none !important;
 }
 .bgVerde{
-    background-color: #1c5c07;
+    background-color: #1c5c07 !important;
 }
 /*ESTILO DA LOGO DO GAME*/
 #boxLogoGame {
@@ -120,6 +122,11 @@ body {
     font-weight: 500px;
     font-family: Patchwork;
     color: #1547d3;
+    transition: background-color .3s ease-in-out ;
+}
+#boxButtonStart button:active,#boxButtonStart button:hover{
+    background-color: #c53636;
+    color: #fff;
 }
 /*ESTILO DA AREA de VITORIAS*/
 .boxVitorias{
@@ -160,6 +167,7 @@ body {
     border-radius: 20px;
     width: 40px;
     height: 40px;
+    transition:  background-color .2s ease-in-out;
 }
 .boxOpc button:last-child{
     background-color: #c53636;
@@ -168,7 +176,9 @@ body {
 .boxOpc button img{
     width: 100%;
 }
-
+#btnHome:active,#btnHome:hover{
+    background-color: #c53636;
+}
 /*ESTILO DOS CONTADORES DO JOGO*/
 .tempoJogo span{
     font-size: 100px;

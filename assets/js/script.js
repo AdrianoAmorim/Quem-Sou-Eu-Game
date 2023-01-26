@@ -16,6 +16,12 @@ const btnNovoJogo = document.getElementById("btnNovoJogo");
 const btnSom = document.getElementById("btnSom");
 const btnHome = document.getElementById("btnHome");
 
+const audioCount = document.getElementById("audioContagem");
+const audioBtnOpc = document.getElementById("audioBtnOpc");
+const audioFimJogada = document.getElementById("audioFimJogada");
+const audioFundo = document.getElementById("audioFundo");
+const audioIniciar = document.getElementById("audioIniciar");
+
 //VARIAVEIS GLOBAIS
 var countVitorias = 0;
 var interval ;
@@ -46,14 +52,19 @@ const startGame = () => {
 //FUNCAO QUE INICIA O CONTADOR inicial DA RODADA
 const startContadorInicial = (tempo, elemento) => {
     elemento.textContent = tempo;
-
+    audioCount.play();
      interval = setInterval(() => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
-            console.log("dentro do if")
+            audioCount.play();
+            
         } else {
+            audioIniciar.play();
+            setTimeout(() => {
+                audioIniciar.pause(); 
             enterGame();
+            }, 600);
         }
     }, 1000);
 }
@@ -64,13 +75,22 @@ const startContadorJogada = (tempo, elemento) => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
+            if(tempo <= 5){
+                audioCount.play();
+            }
         } else {
-            animacaoTelaJogarNovamente();
+            audioFimJogada.play();
+            setTimeout(()=>{
+                animacaoTelaJogarNovamente();
+            },700)
+            
         }
     }, 1000);
 }
 //FUNCAO PARA VOLTAR NO HOME
 const retornarHome = ()=>{
+    audioBtnOpc.play();
+    audioCount.pause();
     clearInterval(interval);
     quadroImg.classList.add("outLeft");
     quadroImg.classList.add("hidden");
@@ -86,7 +106,7 @@ const enterGame = () => {
     clearInterval(interval);
     setImg(sortearNum(3));
     resetTelaContInicial();
-    startContadorJogada(5, textContador);
+    startContadorJogada(10, textContador);
 }
 //FAZ A ANIMACAO DE TROCA DE TELA PARA A TELA jOGAR nOVAMENTE
 const animacaoTelaJogarNovamente = () => {
@@ -97,22 +117,23 @@ const animacaoTelaJogarNovamente = () => {
 }
 //FUNCAO PARA VERIFICAR SE USUARIO ACERTOU OU  NAO E LIBERA PARA CONTINUAR JOGANDO
 const continuarJogando = () => {
+    audioBtnOpc.play();
     if (cbAcertou.checked) {
         countVitorias += 1;
         textCountVitorias.textContent = countVitorias;
     }
     resetTelaJogarNovamente();
     setImg(sortearNum(3));
-    startContadorJogada(5, textContador);
+    startContadorJogada(10, textContador);
 }
 //FUNCAO PARA INICIAR UMA NOVA RODADA DO JOGO (RESETA O CONTADOR DE VITORIAS)
 const novoJogo = () => {
-    console.log("aki")
+    audioBtnOpc.play();
     countVitorias = 0
     textCountVitorias.textContent = countVitorias;
     resetTelaJogarNovamente();
     setImg(sortearNum(3));
-    startContadorJogada(5, textContador);
+    startContadorJogada(10, textContador);
 }
 //FUNCAO PARA RETORNAR A TELA PRINCIPAL DO JOGO E CONTINUAR JOGANDO
 const resetTelaJogarNovamente = () => {
@@ -140,6 +161,7 @@ const animacaoContagemInicial = () => {
     tela.classList.add("hidden");
     contInicial.classList.remove("hidden");
     textContInicial.classList.add("animacaoContInicial");
+   
 }
 
 //FUNCAO PARA SORTEAR UM NUMERO QUE SERA USADO PARA PEGAR A POSICAO NO ARRAY DE IMAGENS
@@ -153,12 +175,26 @@ const setImg = (numSorteado) => {
 };
 
 
-
-
 btnContinuarNj.addEventListener("click", () => continuarJogando());
 btnNovoJogo.addEventListener("click", () => novoJogo());
 btnStart.addEventListener("click", () => startGame());
 btnHome.addEventListener("click",()=> retornarHome());
+cbAcertou.addEventListener("click",()=>{
+    audioBtnOpc.play()
+});
 
+btnSom.addEventListener("click",()=>{
+    if (audioFundo.volume > 0.7) {
+        audioFundo.volume -= 0.7;
+    }
+    if(btnSom.classList.contains("bgVerde")){
+    btnSom.classList.remove("bgVerde");
+    audioFundo.pause();
+    }else{
+        btnSom.classList.add("bgVerde");
+        audioFundo.play();
+    }
+    
+});
 window.onload = setAnimaçoes();
 
