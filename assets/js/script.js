@@ -7,9 +7,14 @@ const textContador = document.querySelector(".tempoJogo span");
 const tela = document.querySelector(".container");
 const interrogacao = document.querySelector(".boxInterrogacao");
 const contInicial = document.querySelector(".boxContInicio");
+const textCountVitorias = document.querySelector(".boxVitorias span");
 const textContInicial = document.querySelector(".boxContInicio span");
 const telaJogarNovamente = document.querySelector(".boxTelaNovoJogo");
+const cbAcertou = document.getElementById("cbAcertou");
+const btnContinuarNj = document.getElementById("btnContinuarNj");
+const btnNovoJogo = document.getElementById("btnNovoJogo");
 
+var countVitorias = 0;
 var imagensSorteio = [
     {
         nome: "Cachorro", url: "./assets/img/cachorro.jpg"
@@ -21,6 +26,8 @@ var imagensSorteio = [
         nome: "Porco", url: "./assets/img/porco.jpg"
     },
 ]
+
+
 //SETA AS ANIMACOES INICIAS DA TELA PRINCIPAL DO JOGO
 const setAnimaçoes = () => {
     tela.classList.add("fadeIn");
@@ -45,6 +52,7 @@ const startContadorInicial = (tempo, elemento) => {
         }
     }, 1000);
 }
+//CONTADOR DA JOGADA
 const startContadorJogada = (tempo, elemento) => {
     elemento.textContent = tempo;
     const interval = setInterval(() => {
@@ -52,25 +60,52 @@ const startContadorJogada = (tempo, elemento) => {
         if (tempo > 0) {
             elemento.textContent = tempo;
         } else {
-            jogarNovamente();
+            animacaoTelaJogarNovamente();
             clearInterval(interval);
         }
     }, 1000);
 }
 
-//ENTRA NO JOGO (aqui eu passo o tamanho do array q tem as imagens p sorteio)
+//ENTRA NO JOGO 
 const enterGame = () => {
     setImg(sortearNum(3));
     resetTelaContInicial();
     startContadorJogada(5, textContador);
 }
-//FUNCAO PARA PERGUNTA O JOGADOR SE QUER CONTINUAR JOGANDO OU REINICIAR A PARTIDA
-const jogarNovamente = () => {
-    animacaoTelaJogarNovamente();
-}
+//FAZ A ANIMACAO DE TROCA DE TELA PARA A TELA jOGAR nOVAMENTE
 const animacaoTelaJogarNovamente = () => {
     tela.classList.add("hidden");
+    telaJogarNovamente.classList.add("fadeIn")
     telaJogarNovamente.classList.remove("hidden");
+}
+//FUNCAO PARA VERIFICAR SE USUARIO ACERTOU OU  NAO E LIBERA PARA CONTINUAR JOGANDO
+const continuarJogando = () => {
+    if (cbAcertou.checked) {
+        countVitorias += 1;
+        textCountVitorias.textContent = countVitorias;
+    }
+    resetTelaJogarNovamente();
+    setImg(sortearNum(3));
+    startContadorJogada(5, textContador);
+}
+//FUNCAO PARA INICIAR UMA NOVA RODADA DO JOGO (RESETA O CONTADOR DE VITORIAS)
+const novoJogo = () => {
+    console.log("aki")
+    countVitorias = 0
+    textCountVitorias.textContent = countVitorias;
+    resetTelaJogarNovamente();
+    setImg(sortearNum(3));
+    startContadorJogada(5, textContador);
+}
+//FUNCAO PARA RETORNAR A TELA PRINCIPAL DO JOGO E CONTINUAR JOGANDO
+const resetTelaJogarNovamente = () => {
+    telaJogarNovamente.classList.add("hidden");
+    tela.classList.remove("hidden");
+    interrogacao.classList.add("hidden");
+    quadroImg.classList.remove("hidden");
+    contador.classList.remove("hidden");
+    btnStart.classList.add("hidden");
+    cbAcertou.checked = false;
 }
 //FUNCAO PARA RETORNA A TELA PRINCIPAL DO JOGO
 const resetTelaContInicial = () => {
@@ -102,7 +137,8 @@ const setImg = (numSorteado) => {
 
 
 
-
+btnContinuarNj.addEventListener("click", () => continuarJogando());
+btnNovoJogo.addEventListener("click", () => novoJogo());
 btnStart.addEventListener("click", () => startGame());
 
 window.onload = setAnimaçoes();

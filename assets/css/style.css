@@ -191,7 +191,7 @@ body {
 .boxTelaNovoJogo .containerNovoJogo{
     width: 100%;
     max-width: 350px;
-    background-color: #1c5c07;
+    background-color: #296614cc;
     border-radius: 15px;
     overflow: hidden;
     padding: 10px;
@@ -220,7 +220,7 @@ body {
     width: 100%;
 }
 .boxTelaNovoJogo .containerNovoJogo .boxAcertouNovoJogo input{
-  all:unset;
+  
   position:relative;
   display: inline-block;
   border: solid 2px #0f3801;
@@ -230,19 +230,7 @@ body {
   cursor:pointer;
   border-radius: 10px;
 }
-.boxAcertouNovoJogo input:checked{
-    border: dashed 1px transparent;
-}
-.boxAcertouNovoJogo input:checked::after{
-  content:"";
-  position:absolute;
-  width:11px;
-  height:11px;
-  left: calc(50% - 5px);
-  top: calc(50% - 6px);
-  border-radius:50%;
-  background: #0f3801;
-}
+
 .boxBtnNovoJogo{
     display: flex;
     justify-content: space-between;
@@ -264,7 +252,7 @@ body {
     animation: animacaoInterrogacao .6s ease-in alternate infinite;
 }
 .fadeIn{
-    animation: fadeIn .8s ease-in forwards;
+    animation: fadeIn .6s ease-out forwards;
 }
 .outLeft{
     animation: outLeft .5s ease-in-out forwards;
