@@ -18,13 +18,12 @@ const btnHome = document.getElementById("btnHome");
 
 const audioCount = document.getElementById("audioContagem");
 const audioBtnOpc = document.getElementById("audioBtnOpc");
-const audioFimJogada = document.getElementById("audioFimJogada");
 const audioFundo = document.getElementById("audioFundo");
 const audioIniciar = document.getElementById("audioIniciar");
 
 //VARIAVEIS GLOBAIS
 var countVitorias = 0;
-var interval ;
+var interval;
 var imagensSorteio = [
     {
         nome: "Cachorro", url: "./assets/img/cachorro.jpg"
@@ -41,29 +40,32 @@ var imagensSorteio = [
 //SETA AS ANIMACOES INICIAS DA TELA PRINCIPAL DO JOGO
 const setAnimaçoes = () => {
     tela.classList.add("fadeIn");
+    if (audioFundo.volume > 0.4) {
+        audioFundo.volume -= 0.4;
+    }
 }
 //FUNCAO PARA INICIAR O JOGO
 const startGame = () => {
     animacaoContagemInicial();
     startContadorInicial(5, textContInicial);
-   
+
 }
 
 //FUNCAO QUE INICIA O CONTADOR inicial DA RODADA
 const startContadorInicial = (tempo, elemento) => {
     elemento.textContent = tempo;
     audioCount.play();
-     interval = setInterval(() => {
+    interval = setInterval(() => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
             audioCount.play();
-            
+
         } else {
             audioIniciar.play();
             setTimeout(() => {
-                audioIniciar.pause(); 
-            enterGame();
+                audioIniciar.pause();
+                enterGame();
             }, 600);
         }
     }, 1000);
@@ -71,24 +73,20 @@ const startContadorInicial = (tempo, elemento) => {
 //CONTADOR DA JOGADA
 const startContadorJogada = (tempo, elemento) => {
     elemento.textContent = tempo;
-     interval = setInterval(() => {
+    interval = setInterval(() => {
         --tempo
         if (tempo > 0) {
             elemento.textContent = tempo;
-            if(tempo <= 5){
+            if (tempo <= 5) {
                 audioCount.play();
             }
         } else {
-            audioFimJogada.play();
-            setTimeout(()=>{
-                animacaoTelaJogarNovamente();
-            },700)
-            
+            animacaoTelaJogarNovamente();
         }
     }, 1000);
 }
 //FUNCAO PARA VOLTAR NO HOME
-const retornarHome = ()=>{
+const retornarHome = () => {
     audioBtnOpc.play();
     audioCount.pause();
     clearInterval(interval);
@@ -98,7 +96,7 @@ const retornarHome = ()=>{
     contador.classList.add("hidden");
     btnStart.classList.remove("hidden");
     btnStart.classList.add("fadeIn");
-    
+
 
 }
 //ENTRA NO JOGO 
@@ -111,9 +109,15 @@ const enterGame = () => {
 //FAZ A ANIMACAO DE TROCA DE TELA PARA A TELA jOGAR nOVAMENTE
 const animacaoTelaJogarNovamente = () => {
     clearInterval(interval);
-    tela.classList.add("hidden");
-    telaJogarNovamente.classList.add("fadeIn")
-    telaJogarNovamente.classList.remove("hidden");
+    audioIniciar.play();
+    setTimeout(() => {
+        audioIniciar.pause();
+        tela.classList.add("hidden");
+        telaJogarNovamente.classList.add("fadeIn")
+        telaJogarNovamente.classList.remove("hidden");
+    }, 1000);
+   
+
 }
 //FUNCAO PARA VERIFICAR SE USUARIO ACERTOU OU  NAO E LIBERA PARA CONTINUAR JOGANDO
 const continuarJogando = () => {
@@ -161,7 +165,7 @@ const animacaoContagemInicial = () => {
     tela.classList.add("hidden");
     contInicial.classList.remove("hidden");
     textContInicial.classList.add("animacaoContInicial");
-   
+
 }
 
 //FUNCAO PARA SORTEAR UM NUMERO QUE SERA USADO PARA PEGAR A POSICAO NO ARRAY DE IMAGENS
@@ -178,23 +182,20 @@ const setImg = (numSorteado) => {
 btnContinuarNj.addEventListener("click", () => continuarJogando());
 btnNovoJogo.addEventListener("click", () => novoJogo());
 btnStart.addEventListener("click", () => startGame());
-btnHome.addEventListener("click",()=> retornarHome());
-cbAcertou.addEventListener("click",()=>{
+btnHome.addEventListener("click", () => retornarHome());
+cbAcertou.addEventListener("click", () => {
     audioBtnOpc.play()
 });
 
-btnSom.addEventListener("click",()=>{
-    if (audioFundo.volume > 0.7) {
-        audioFundo.volume -= 0.7;
-    }
-    if(btnSom.classList.contains("bgVerde")){
-    btnSom.classList.remove("bgVerde");
-    audioFundo.pause();
-    }else{
+btnSom.addEventListener("click", () => {
+    if (btnSom.classList.contains("bgVerde")) {
+        btnSom.classList.remove("bgVerde");
+        audioFundo.pause();
+    } else {
         btnSom.classList.add("bgVerde");
         audioFundo.play();
     }
-    
+
 });
 window.onload = setAnimaçoes();
 

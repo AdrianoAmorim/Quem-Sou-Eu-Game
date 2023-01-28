@@ -4,12 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Quem sou Eu?</title>
 </head>
 
 <body>
+    <div class="boxTelaAvisoRotacao">
+        <div class="boxTextAvisoRotacao">
+            <span>Para uma melhor experiencia com o game</span>
+            <span>(Porfavor ative a ROTACAO do seu aparelho)</span>
+        </div>
+        <div class="boxImgAvisoRotacao">
+            <img src="assets/img/icon_Rotacao.png"/>
+        </div>
+        <div class="boxSubTextAvisoRotacao">
+            <span>Estamos Te aguardando!!</span>
+        </div>
+    </div>
+
     <!--TELA DE CONTAGEM INICIAL ANTES DE ENTRAR NA JOGADA-->
     <div class="boxContInicio hidden">
         <span>-</span>
@@ -38,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="container ">
+    <div class="container">
         <!--AREA ONDE FICA A LOGO E AS OPCOES E CAMPO DE VITORIAS-->
         <div id="boxLogoGame">
             <div class="boxVitorias">
@@ -80,25 +93,27 @@
             </div>
         </div>
     </div>
-    <audio id="audioContagem">
+
+
+    <!--AREA DE CARREGAMENTO DOS AUDIOS-->
+    <audio id="audioContagem" preload="auto">
         <source src="./assets/sounds/beep-10.wav" type="audio/wav" />
 	  Seu navegador não suporta HTML5!
     </audio>
-    <audio id="audioBtnOpc">
+    <audio id="audioBtnOpc"  preload="auto">
         <source src="./assets/sounds/audioBtn.wav" type="audio/wav" />
 	  Seu navegador não suporta HTML5!
     </audio>
-   
-    <audio id="audioFimJogada">
-        <source src="./assets/sounds/audioFimJogada.mp3" type="audio/mp3" />
-	  Seu navegador não suporta HTML5!
-    </audio>
-    <audio id="audioFundo" loop>
+    <audio id="audioFundo" loop  preload="auto">
         <source src="./assets/sounds/audioFundo.mp3" type="audio/mp3" />
 	  Seu navegador não suporta HTML5!
     </audio>
-    <audio id="audioIniciar" loop>
+    <audio id="audioIniciar" loop  preload="auto">
         <source src="./assets/sounds/audioIniciar.mp3" type="audio/mp3" />
+	  Seu navegador não suporta HTML5!
+    </audio>
+    <audio id=" audioFimJogada" loop  preload="auto">
+        <source src="./assets/sounds/audioFimJogada.mp3" type="audio/mp3" />
 	  Seu navegador não suporta HTML5!
     </audio>
     <script src="./assets/js/script.js"></script>
