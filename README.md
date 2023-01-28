@@ -1,4 +1,4 @@
-# Quem-Sou-Eu-Game
+# Quem Sou Eu?
  Jogo Criado em html - css - js 
  Consiste em um JOGADOR para adivinhar as imagens e outra pessoa que ira segurar a imagem com a tela virada p o outro jogador
  que ira fazer as imitacoes para ele Adivinhar:
