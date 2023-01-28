@@ -201,9 +201,7 @@ button{
 }
 /*ESTILO DA TELA DE NOVO JOGO*/
 .boxTelaNovoJogo{
-    position: relative;
-    left: 0;
-    top: 0;
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -404,6 +402,8 @@ button{
 @media only screen and (orientation:portrait){
     .boxTelaAvisoRotacao { display:flex; }
     .container{display: none;}
+    .boxTelaNovoJogo{display: none !important;}
+    .boxContInicio{display: none !important;}
 }
 @media only screen and (orientation:landscape){
     .boxTelaAvisoRotacao { display:none; }
