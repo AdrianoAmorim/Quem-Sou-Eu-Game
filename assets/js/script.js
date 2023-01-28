@@ -24,6 +24,8 @@ const audioIniciar = document.getElementById("audioIniciar");
 //VARIAVEIS GLOBAIS
 var countVitorias = 0;
 var interval;
+var qtdImg = 19;
+var tempoCountJogada = 30;
 var imagensSorteio = [
     {
         nome: "Cachorro", url: "./assets/img/cachorro.jpg"
@@ -34,6 +36,54 @@ var imagensSorteio = [
     {
         nome: "Porco", url: "./assets/img/porco.jpg"
     },
+    {
+        nome: "Arara", url: "./assets/img/arara.jpg"
+    },
+    {
+        nome: "Bateria", url: "./assets/img/bateria.jpg"
+    },
+    {
+        nome: "Celular", url: "./assets/img/celular.jpg"
+    },
+    {
+        nome: "Coelho", url: "./assets/img/coelho.jpg"
+    },
+    {
+        nome: "Coruja", url: "./assets/img/coruja.jpg"
+    },
+    {
+        nome: "Elvis", url: "./assets/img/elvis.jpg"
+    },
+    {
+        nome: "Garfo", url: "./assets/img/garfo.jpg"
+    },
+    {
+        nome: "Guitarra", url: "./assets/img/guitarra.jpg"
+    },
+    {
+        nome: "Microfone", url: "./assets/img/microfone.jpg"
+    },
+    {
+        nome: "Minhoca", url: "./assets/img/minhoca.jpg"
+    },
+    {
+        nome: "Mouse", url: "./assets/img/mouse.jpg"
+    },
+    {
+        nome: "Patins", url: "./assets/img/patins.jpg"
+    },
+    {
+        nome: "Pinguim", url: "./assets/img/pinguin.jpg"
+    },
+    {
+        nome: "Silvio Santos", url: "./assets/img/silvio.jpg"
+    },
+    {
+        nome: "Skate", url: "./assets/img/skate.jpg"
+    },
+    {
+        nome: "Teclado", url: "./assets/img/teclado.jpg"
+    }
 ]
 
 
@@ -102,9 +152,9 @@ const retornarHome = () => {
 //ENTRA NO JOGO 
 const enterGame = () => {
     clearInterval(interval);
-    setImg(sortearNum(3));
+    setImg(sortearNum(qtdImg));
     resetTelaContInicial();
-    startContadorJogada(10, textContador);
+    startContadorJogada(tempoCountJogada, textContador);
 }
 //FAZ A ANIMACAO DE TROCA DE TELA PARA A TELA jOGAR nOVAMENTE
 const animacaoTelaJogarNovamente = () => {
@@ -127,8 +177,8 @@ const continuarJogando = () => {
         textCountVitorias.textContent = countVitorias;
     }
     resetTelaJogarNovamente();
-    setImg(sortearNum(3));
-    startContadorJogada(10, textContador);
+    setImg(sortearNum(qtdImg));
+    startContadorJogada(tempoCountJogada, textContador);
 }
 //FUNCAO PARA INICIAR UMA NOVA RODADA DO JOGO (RESETA O CONTADOR DE VITORIAS)
 const novoJogo = () => {
@@ -136,8 +186,8 @@ const novoJogo = () => {
     countVitorias = 0
     textCountVitorias.textContent = countVitorias;
     resetTelaJogarNovamente();
-    setImg(sortearNum(3));
-    startContadorJogada(10, textContador);
+    setImg(sortearNum(qtdImg));
+    startContadorJogada(tempoCountJogada, textContador);
 }
 //FUNCAO PARA RETORNAR A TELA PRINCIPAL DO JOGO E CONTINUAR JOGANDO
 const resetTelaJogarNovamente = () => {
@@ -178,7 +228,7 @@ const setImg = (numSorteado) => {
     textImg.textContent = imagensSorteio[numSorteado].nome;
 };
 
-
+//EVENTOS DOS BOTOES E CARERGAMENTO INICIAL
 btnContinuarNj.addEventListener("click", () => continuarJogando());
 btnNovoJogo.addEventListener("click", () => novoJogo());
 btnStart.addEventListener("click", () => startGame());
@@ -186,7 +236,6 @@ btnHome.addEventListener("click", () => retornarHome());
 cbAcertou.addEventListener("click", () => {
     audioBtnOpc.play()
 });
-
 btnSom.addEventListener("click", () => {
     if (btnSom.classList.contains("bgVerde")) {
         btnSom.classList.remove("bgVerde");
@@ -197,5 +246,6 @@ btnSom.addEventListener("click", () => {
     }
 
 });
+
 window.onload = setAnimaçoes();
 
